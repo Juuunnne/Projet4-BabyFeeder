@@ -1,0 +1,14 @@
+fonctions :
+	-Timer + enregistrer l'heure (rappel)
+	-quantité biberon
+	-liste de course
+	-vomi bébé
+
+panneau d'infos
+bouton option pour renseigner les infos du bébé - KARMA
+biberon avec bouton pour les quantités - KARMA
+Timer en bas - LE VIOC
+bouton pour noter prise de biberon
+bouton vomi
+bouton liste de course - JUN
+(quand timer finit tête de bébé pas content)
