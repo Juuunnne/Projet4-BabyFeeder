@@ -1,5 +1,6 @@
 #include "./hpp/Feeder.hpp"
 #include "./hpp/Interface.hpp"
+#include "./hpp/feederButtton.hpp"
 
 const int SCREEN_WIDTH = 420;
 const int SCREEN_HEIGHT = 600;
