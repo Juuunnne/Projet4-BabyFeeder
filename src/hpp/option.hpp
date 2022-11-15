@@ -12,7 +12,6 @@ public:
     function<void(int q, int mx, int mn)> SQ; /*function -> setQuantity(int q);*/
 
     option();
-    option(SDL_Renderer* renderer);
     ~option();
     void setActive();
     void showOption();

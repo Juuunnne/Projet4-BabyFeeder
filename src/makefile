@@ -1,2 +1,5 @@
-babyfeeder: main.cpp interface.cpp Feeder.cpp
- g++ main.cpp Interface.cpp Feeder.cpp option.cpp button.cpp -o babyfeeder -lSDL2 -lSDL_ttf
+all:	babyfeeder
+
+babyfeeder:
+	g++ ./*.cpp -lSDL2 -o babyfeeder && DISPLAY=:0 ./babyfeeder
+

@@ -5,11 +5,6 @@ option::option()
     
 }
 
-option::option(SDL_Renderer* renderer)
-{
-    Button op(renderer, 210, 210, 100, 100, 255, 255, 255, 255);
-}
-
 option::~option()
 {
     /*Destroy surface and texture*/
