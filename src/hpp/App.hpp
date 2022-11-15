@@ -8,4 +8,4 @@
 using namespace std;
 
 void AppLoop();
-void UpdateDisplay();
+void UpdateDisplay(SDL_Renderer* renderer);

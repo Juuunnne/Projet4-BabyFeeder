@@ -10,8 +10,8 @@ option::~option()
     /*Destroy surface and texture*/
 }
 
-void drawOptionButton(SDL_Renderer* renderer) {
-    
+void option::drawOptionButton(SDL_Renderer* renderer) {
+    Button optionBt(renderer, 50, 50, 25, 25, 106, 107, 106, 255);
 }
 
 // void option::setActive()

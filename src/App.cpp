@@ -22,8 +22,9 @@ void AppLoop()
     while (runApp)
     {
         // main loop
-        // UpdateDisplay(win.getRenderer());
-        BG.setBackground(win.getRenderer());
+        UpdateDisplay(win.getRenderer());
+        // BG.setBackground(win.getRenderer());
+        // op.drawOptionButton(win.getRenderer());
 
         while (SDL_PollEvent(&e))
         {
@@ -36,11 +37,13 @@ void AppLoop()
     }
 }
 
-// void UpdateDisplay(SDL_Renderer *renderer)
-// {
-//     SDL_RenderClear(renderer);
-//     BG.setBackground(win.getRenderer());
-//     op.drawOptionButton(win.getRenderer());
-//     // All draw function
-//     SDL_RenderPresent(renderer);
-// }
+//*Taff pour Cyrian (penses a suppr BG.setBackground(win.getRenderer());)*//
+
+void UpdateDisplay(SDL_Renderer *renderer)
+{
+    SDL_RenderClear(renderer);
+    BG.setBackground(renderer);
+    op.drawOptionButton(renderer);
+    // All draw function
+    SDL_RenderPresent(renderer);
+}
