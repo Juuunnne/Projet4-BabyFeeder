@@ -1,6 +1,8 @@
 #include "./hpp/Feeder.hpp"
 #include "./hpp/Interface.hpp"
 #include "./hpp/feederButtton.hpp"
+#include "./hpp/option.hpp"
+#include "./hpp/button.hpp"
 
 const int SCREEN_WIDTH = 420;
 const int SCREEN_HEIGHT = 600;
@@ -51,9 +53,9 @@ int main()
 {
     SDL_Event e;
     SDL_ShowCursor(SDL_ENABLE);
-    Interface whiteBG;
-    Interface button;
-
+    //Interface whiteBG;
+    option op(renderer);
+    
     // Initialization of SDL
     if (init() != true)
     {
@@ -61,34 +63,16 @@ int main()
     }
     else
     {
-        whiteBG.setBackground(renderer);
-        button.drawButton(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+        //whiteBG.setBackground(renderer);    
     }
     // While App running, close window when click on X
     while (runApp)
     {
-        if (button.onHover(renderer, SCREEN_WIDTH, SCREEN_HEIGHT))
-        {
-            cout << "Cursor on button" << endl;
-            
-        }
-        else
-            cout << " out" << endl;
-
         while (SDL_PollEvent(&e))
         {
             if (e.type == SDL_QUIT)
             {
                 runApp = false;
-            }
-            if (e.type == SDL_MOUSEBUTTONDOWN)
-            {
-                if (e.button.button ==SDL_BUTTON_LEFT)
-                {
-                    cout << "Left click" << endl;
-                    button.clicked();
-                    button.clickRender(renderer);
-                }
             }
         }
     }

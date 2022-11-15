@@ -12,3 +12,9 @@ bouton pour noter prise de biberon
 bouton vomi
 bouton liste de course - JUN
 (quand timer finit tête de bébé pas content)
+
+Buttons :
+	class Buttons
+	drawButton
+	onClick
+	setFunction
