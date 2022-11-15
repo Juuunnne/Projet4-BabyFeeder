@@ -45,5 +45,5 @@ void UpdateDisplay(SDL_Renderer *renderer)
     BG.setBackground(renderer);
     op.drawOptionButton(renderer);
     // All draw function
-    SDL_RenderPresent(renderer);
+    // SDL_RenderPresent(renderer);
 }

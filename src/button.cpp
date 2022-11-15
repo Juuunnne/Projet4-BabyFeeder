@@ -10,6 +10,7 @@ Button::Button(SDL_Renderer *renderer, int posx, int posy, int width, int height
     SDL_SetRenderDrawColor(renderer, r, g, b, a);
     SDL_RenderDrawRect(renderer, &button);
     SDL_RenderFillRect(renderer, &button);
+    SDL_RenderPresent(renderer);
 }
 
 Button::~Button() {
