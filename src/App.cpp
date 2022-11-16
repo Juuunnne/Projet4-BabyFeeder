@@ -7,7 +7,7 @@ int buttonMap[10][3] = {0};
 Window win;
 Interface BG;
 option op;
-feederButton fdB;
+feederButton fdB(400, 400, win.getRenderer());
 
 void AppLoop()
 {
@@ -36,7 +36,7 @@ void AppLoop()
         {
             if (e.type == SDL_MOUSEBUTTONDOWN)
             {
-                OnClick();
+                // OnClick();
                 UpdateDisplay(win.getRenderer());
             }
 
@@ -57,23 +57,22 @@ void AppLoop()
 
 void UpdateDisplay(SDL_Renderer *renderer)
 {
-    // SDL_RenderClear(renderer);
+    SDL_RenderClear(renderer);
     BG.setBackground(renderer);
-    auto [x, y, w, h] = op.drawOptionButton(renderer);
-    setMapButton(x, y, w, h);
+    op.drawOption(renderer, fdB);
     fdB.drawFeeder(renderer);
     // All draw function
-    // SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer);
 }
 
 void OnClick() {
     //calcul si la souris est sur un bouton
 
-    if (canClick == true) {
-        switch (index) {
+    // if (canClick == true) {
+    //     switch (index) {
 
-        }
-    }
+    //     }
+    // }
 }
 
 void setMapButton(int x, int y, int w, int h) {

@@ -4,28 +4,28 @@ Button::Button()
 {
 }
 
-Button::Button(SDL_Renderer *renderer, int posx, int posy, int width, int height, int r, int g, int b, int a)
-{
-    SDL_Rect button = {posx, posy, width, height};
-
-    this->px = posx;
-    this->py = posy;
-    this->w = width;
-    this->h = height;
-}
-
 Button::~Button()
 {
 }
 
-auto Button::buttonMapping()
+void Button::setButton(int px, int py, int w, int h, int r, int g, int b, int a)
 {
-    struct retVals
-    {
-        int x;
-        int y;
-        int w;
-        int h;
-    };
-    return retVals{this->px, this->py, this->w, this->h};
+    this->posx = px;
+    this->posy = py;
+    this->width = w;
+    this->height = h;
+    this->red = r;
+    this->green = g;
+    this->blue = b;
+    this->alpha = a;
+}
+
+void Button::drawButton(SDL_Renderer* renderer)
+{
+    SDL_Rect bt = {this->posx, this->posy, this->width, this->height};
+
+    SDL_SetRenderDrawColor(renderer, this->red, this->green, this->blue, this->alpha);
+    SDL_RenderDrawRect(renderer, &bt);
+    SDL_RenderFillRect(renderer, &bt);
+    SDL_RenderPresent(renderer);
 }
