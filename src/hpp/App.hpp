@@ -9,3 +9,5 @@ using namespace std;
 
 void AppLoop();
 void UpdateDisplay(SDL_Renderer* renderer);
+void OnClick();
+void setMapButton();

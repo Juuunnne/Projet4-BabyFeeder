@@ -1,5 +1,5 @@
-#include <functional>
 #include <SDL2/SDL.h>
+#include "./feederButtton.hpp"
 #include "./button.hpp"
 
 using namespace std;
@@ -11,14 +11,11 @@ public:
 
     option();
     ~option();
-    void drawOptionButton(SDL_Renderer* renderer);
+    auto drawOptionButton(SDL_Renderer* renderer);
     void setActive();
     void showOption();
+    void setInformation(feederButton* fb);
 
 private:
     bool active = false;
- 
-    void setInformation();
 };
-
-/*We should associate feeder and option objects just after created it with SQ/setQuantity(int q)*/

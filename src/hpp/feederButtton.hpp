@@ -1,13 +1,17 @@
+#pragma once
 #include <SDL2/SDL.h>
 #include <iostream>
+#include "./button.hpp"
 
 class feederButton
 {
 public:
     feederButton();
+    feederButton(int px, int py);
     ~feederButton();
     void setQuantity(int q, int mx, int mn);
     void setFeeder(int x, int y);
+    void drawFeeder(SDL_Renderer *renderer);
 
 private:
     int quantity;
@@ -18,9 +22,7 @@ private:
     int posx;
     int posy;
 
-    void showFeeder();
+    
     void verifyQuantity();
     void changeQuantity(bool increase, int amount);
 };
-
-/*We should associate feeder and option objects just after created it with SQ/setQuantity(int q)*/

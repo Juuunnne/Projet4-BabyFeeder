@@ -2,16 +2,28 @@
 
 option::option()
 {
-    
 }
 
 option::~option()
 {
-    /*Destroy surface and texture*/
 }
 
-void option::drawOptionButton(SDL_Renderer* renderer) {
+auto option::drawOptionButton(SDL_Renderer *renderer)
+{
+    struct vals
+    {
+        int px, py, wi, he;
+    };
+
+    if (this->active == true)
+    {
+        this->showOption();
+    }
+
     Button optionBt(renderer, 20, 20, 30, 30, 106, 107, 106, 255);
+    auto [x, y, w, h] = optionBt.buttonMapping();
+
+    return vals{x, y, w, h};
 }
 
 void option::setActive()
@@ -19,43 +31,56 @@ void option::setActive()
     if (active == true)
     {
         this->active = false;
-        this->showOption();
-    } else {
+    }
+    else
+    {
         this->active = true;
-        this->showOption();
     }
 }
 
-void option::showOption()
+void option::showOption(SDL_Renderer* renderer)
 {
     if (active == true)
     {
-        /*Draw a Rect for background*/
+        //Rect for BG
+        SDL_Rect bgOp = {210, 200, 420, 100};
+
+        SDL_SetRenderDrawColor(renderer, 116, 116, 116, 255);
+        SDL_RenderDrawRect(renderer, &bgOp);
+        SDL_RenderFillRect(renderer, &bgOp);
+        SDL_RenderPresent(renderer);
+
         /*Draw a Rect with last time you gave food*/
         /*Draw a Rect with 4 buttons, one for <1month, one for 2->3month, one for 4->6month and one for 7->12month*/
-    } else {
-        /*Destroy all*/
+        Button fMonth(renderer, 100, 150, 20, 20, 255, 255, 255, 255);
+        Button tMonth(renderer, 200, 150, 20, 20, 255, 255, 255, 255);
+        Button thMonth(renderer, 300, 150, 20, 20, 255, 255, 255, 255);
+        Button foMonth(renderer, 400, 150, 20, 20, 255, 255, 255, 255);
+    }
+    else
+    {
+        /*Do a Flip*/
     }
 }
 
-void option::setInformation()
+void option::setInformation(feederButton *fb)
 {
     switch (this->select)
     {
     case 1:
-        this->SQ(650, 800, 450);
+        fb->setQuantity(650, 800, 450);
         break;
     case 2:
-        this->SQ(700, 900, 700);
+        fb->setQuantity(700, 900, 700);
         break;
     case 3:
-        this->SQ(900, 1000, 850);
+        fb->setQuantity(900, 1000, 850);
         break;
     case 4:
-        this->SQ(800, 750, 850);
+        fb->setQuantity(800, 750, 850);
         break;
     default:
-        this->SQ(500, 1000, 0);
+        fb->setQuantity(500, 1000, 0);
         break;
     }
 }
