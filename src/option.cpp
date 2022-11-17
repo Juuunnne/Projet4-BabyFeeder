@@ -2,61 +2,23 @@
 
 option::option()
 {
-    this->setOption();
 }
 
 option::~option()
 {
 }
 
-void option::setOption() {
-    this->opBt.setButton(25, 25, 25, 25, 116, 116, 116, 255);
+void option::setOption (int px, int py, int w, int h, int r, int g, int b, int a) {
+    this->opBt.setButton(px, py, w, h, r, g, b, a);
 }
 
 void option::drawOption(SDL_Renderer* renderer, feederButton fb)
 {
-    this->opBt.drawButton(renderer);
-
-    if (this->active) {
-        showOption(renderer, fb);
-    }    
+    this->opBt.drawButton(renderer);    
 }
 
-void option::setActive()
-{
-    if (this->active == true)
-    {
-        this->active = false;
-    }
-    else
-    {
-        this->active = true;
-    }
-}
-
-void option::showOption(SDL_Renderer* renderer, feederButton fb)
-{
-    if (this->active == true)
-    {
-        //Rect for BG
-        this->bgOp = {0, 100, 420, 300};
-
-        SDL_SetRenderDrawColor(renderer, 116, 116, 116, 255);
-        SDL_RenderDrawRect(renderer, &bgOp);
-        SDL_RenderFillRect(renderer, &bgOp);
-
-        /*Draw a Rect with last time you gave food*/
-
-        /*Draw a Rect with 4 buttons, one for <1month, one for 2->3month, one for 4->6month and one for 7->12month*/
-        this->fMonth.setButton(100, 150, 20, 20, 255, 255, 255, 255);
-        this->tMonth.setButton(200, 150, 20, 20, 255, 255, 255, 255);
-        this->thMonth.setButton(300, 150, 20, 20, 255, 255, 255, 255);
-        this->foMonth.setButton(400, 150, 20, 20, 255, 255, 255, 255);
-    }
-    else
-    {
-        /*Do a Flip*/
-    }
+int option::changeAge() {
+    return 5;
 }
 
 void option::setInformation(feederButton fb, int select)
@@ -79,4 +41,8 @@ void option::setInformation(feederButton fb, int select)
         fb.setQuantity(500, 1000, 0);
         break;
     }
+}
+
+tuple<int, int, int, int> option::getButtons() {
+    return make_tuple (opBt.posx, opBt.posy, opBt.width, opBt.height);
 }

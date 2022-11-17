@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <functional>
+#include <tuple>
 #include "./feederButtton.hpp"
 #include "./button.hpp"
 
@@ -10,20 +11,15 @@ class option
 public:
 //créer un struct pour chaque Button?
     Button opBt;
-    SDL_Rect bgOp;
-    Button fMonth;
-    Button tMonth;
-    Button thMonth;
-    Button foMonth;
+    int age = 0;
 
     option();
     ~option();
-    void setOption();
+    void setOption (int px, int py, int w, int h, int r, int g, int b, int a);
     void drawOption(SDL_Renderer* renderer, feederButton fb);
-    void setActive();
-    void showOption(SDL_Renderer* renderer, feederButton fb);
+    int changeAge();
     void setInformation(feederButton fb, int select);
-
+    tuple<int, int, int, int> getButtons();
 
 private:
     bool active = false;
