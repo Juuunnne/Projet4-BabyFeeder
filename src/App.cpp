@@ -11,6 +11,7 @@ Interface BG;
 option opMinus;
 option opPlus;
 feederButton fdB(400, 400, win.getRenderer());
+// Shoppinglist inputText;
 
 void AppLoop()
 {
@@ -45,6 +46,8 @@ void AppLoop()
 
         while (SDL_PollEvent(&e) != 0)
         {
+            // inputText.handleEvent(e, win.getRenderer());
+
             if (e.type == SDL_MOUSEBUTTONDOWN)
             {
                 OnClick();
@@ -73,6 +76,7 @@ void UpdateDisplay(SDL_Renderer *renderer)
     opPlus.drawOption(renderer, fdB);
     opMinus.drawOption(renderer, fdB);
     fdB.drawFeeder(renderer);
+    // inputText.render(renderer, 50, 100);
     // All draw function
     SDL_RenderPresent(renderer);
 }
