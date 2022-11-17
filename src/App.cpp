@@ -2,7 +2,10 @@
 
 bool runApp = true;
 int buttonMap[10][4] = {0};
-int Age = 0;
+int Age = 1;
+int quantite = 500;
+int maxQ = 1000;
+int minQ = 5;
 
 // Init All Objects
 SDL_Rect mousePos;
@@ -30,27 +33,27 @@ void AppLoop()
         cout << "Failed to initialize" << endl;
     }
 
-    opMinus.setOption(25, 25, 25, 25, 89, 195, 247, 255);
+    opMinus.setOption(25, 25, 40, 40, 89, 195, 247, 255);
     auto cordOp1 = opMinus.getButtons();
     setMapButton(get<0>(cordOp1), get<1>(cordOp1), get<2>(cordOp1), get<3>(cordOp1));
 
-    opPlus.setOption(75, 25, 25, 25, 57, 128, 250, 255);
+    opPlus.setOption(75, 25, 40, 40, 57, 128, 250, 255);
     auto cordOp2 = opPlus.getButtons();
     setMapButton(get<0>(cordOp2), get<1>(cordOp2), get<2>(cordOp2), get<3>(cordOp2));
 
-    fBPlus.setFeeder(315, 400, 20, 20, 0, 0, 0, 255);
+    fBPlus.setFeeder(360, 410, 40, 40, 114, 247, 154, 255);
     auto cordOp3 = fBPlus.getButtons();
     setMapButton(get<0>(cordOp3), get<1>(cordOp3), get<2>(cordOp3), get<3>(cordOp3));
 
-    fBMinus.setFeeder(355, 400, 20, 20, 0, 0, 0, 255);
+    fBMinus.setFeeder(310, 410, 40, 40, 247, 126, 126, 255);
     auto cordOp4 = fBMinus.getButtons();
     setMapButton(get<0>(cordOp4), get<1>(cordOp4), get<2>(cordOp4), get<3>(cordOp4));
 
-    T.setTimeBt(75, 375, 100, 100, 153, 24, 31, 255);
+    T.setTimeBt(50, 350, 100, 100, 153, 24, 31, 255);
     auto cordOp5 = T.getButtons();
     setMapButton(get<0>(cordOp5), get<1>(cordOp5), get<2>(cordOp5), get<3>(cordOp5));
 
-    Tvomi.setTimeBt(200, 400, 50, 50, 47, 77, 45, 255);
+    Tvomi.setTimeBt(175, 400, 50, 50, 47, 77, 45, 255);
     auto cordOp6 = Tvomi.getButtons();
     setMapButton(get<0>(cordOp6), get<1>(cordOp6), get<2>(cordOp6), get<3>(cordOp6));
 
@@ -101,7 +104,7 @@ void UpdateDisplay(SDL_Renderer *renderer)
     T.drawTimerBt(renderer);
     Tvomi.drawTimerBt(renderer);
     // inputText.render(renderer, 50, 100);
-    // All draw function
+    // All draw function //
     SDL_RenderPresent(renderer);
 }
 
@@ -109,38 +112,49 @@ void OnClick()
 {
     int idButton = 0;
     idButton = onHover();
-    switch (idButton) {
-        case 0 :
-            cout << "bouton moins (age en mois)" << endl;
-            if (Age > 0) {
-                Age--;
-            }
-            cout << Age << " mois" << endl;
-            break;
-        case 1 :
-            cout << "bouton plus (age en mois)" << endl;
-            if (Age < 12) {
-                Age++;
-            }
-            cout << Age << " mois" << endl;
-            break;
-        case 2 :
-            cout << "Moins de lait" << endl;
-            break;
-        case 3 :
-            cout << "Plus de lait" << endl;
-            break;
-        case 4 :
-            cout << "il a manger !" << endl;
-            T.resetTimer(SDL_GetTicks());
-            break;
-        case 5 :
-            cout << "il a vomi..." << endl;
-            T.resetTimer(SDL_GetTicks());
-            break;
-        default :
+    switch (idButton)
+    {
+    case 0:
+        cout << "bouton moins (age en mois)" << endl;
+        if (Age > 0)
+        {
+            Age--;
+            setByAge(Age);
+        }
+        cout << Age << " mois" << endl;
+        break;
+    case 1:
+        cout << "bouton plus (age en mois)" << endl;
+        if (Age < 12)
+        {
+            Age++;
+            setByAge(Age);
+        }
+        cout << Age << " mois" << endl;
+        break;
+    case 2:
+        cout << "Plus de lait" << endl;
+        quantite = quantite + 5;
+        verifyQuantity();
+        cout << quantite << " mL" << endl;
+        break;
+    case 3:
+        cout << "Moins de lait" << endl;
+        quantite = quantite - 5;
+        verifyQuantity();
+        cout << quantite << " mL" << endl;
+        break;
+    case 4:
+        cout << "il a manger !" << endl;
+        T.resetTimer(SDL_GetTicks());
+        break;
+    case 5:
+        cout << "il a vomi..." << endl;
+        T.resetTimer(SDL_GetTicks());
+        break;
+    default:
         cout << "Do nothing here." << endl;
-            break;
+        break;
     }
 }
 
@@ -178,4 +192,73 @@ int onHover()
     }
 
     return 11;
+}
+
+void setByAge(int a)
+{
+    switch (a)
+    {
+    case 0:
+        setQuantity(650, 800, 450);
+        break;
+    case 1:
+        setQuantity(650, 800, 450);
+        break;
+    case 2:
+        setQuantity(800, 900, 700);
+        break;
+    case 3:
+        setQuantity(800, 900, 700);
+        break;
+    case 4:
+        setQuantity(800, 900, 700);
+        break;
+    case 5:
+        setQuantity(900, 1000, 850);
+        break;
+    case 6:
+        setQuantity(900, 1000, 850);
+        break;
+    case 7:
+        setQuantity(900, 1000, 850);
+        break;
+    case 8:
+        setQuantity(900, 1000, 850);
+        break;
+    case 9:
+        setQuantity(800, 850, 750);
+        break;
+    case 10:
+        setQuantity(800, 850, 750);
+        break;
+    case 11:
+        setQuantity(800, 850, 750);
+        break;
+    case 12:
+        setQuantity(800, 850, 750);
+        break;
+    default:
+        setQuantity(500, 1000, 0);
+        break;
+    }
+}
+
+void setQuantity(int q, int mx, int mn)
+{
+    quantite = q;
+    maxQ = mx;
+    minQ = mn;
+}
+
+void verifyQuantity()
+{
+    if (quantite > maxQ)
+    {
+        quantite = maxQ;
+        cout << "Surcharge pondérale ?" << endl; // ttf please
+    } else if (quantite < minQ)
+    {
+        quantite = minQ;
+        cout << "Il va mourir de faim..." << endl; // ttf please
+    }
 }

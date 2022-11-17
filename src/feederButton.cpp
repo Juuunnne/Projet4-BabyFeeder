@@ -21,37 +21,7 @@ void feederButton::drawFeederButtons(SDL_Renderer *renderer)
 
 void feederButton::drawFeeder(SDL_Renderer *renderer) {
     //Draw image and ttf
-}
-
-//(posx - (200 /2 +15))
-
-void feederButton::verifyQuantity()
-{
-    if (quantity > max)
-    {
-        this->quantity = max;
-        printf("you can't increase more"); //ttf please
-    }
-    if (quantity < min)
-    {
-        this->quantity = min;
-        printf("You can't reduce more !"); //ttf please
-    }
-}
-
-void feederButton::changeQuantity(bool increase, int amount)
-{
-    if (increase == true)
-    {
-        this->quantity = +amount;
-        this->verifyQuantity();
-    }
-    else
-    {
-        this->quantity = -amount;
-        this->verifyQuantity();
-    }
-}
+} //(posx - (200 /2 +15))
 
 tuple<int, int, int, int> feederButton::getButtons() {
     return make_tuple (fButton.posx, fButton.posy, fButton.width, fButton.height);
