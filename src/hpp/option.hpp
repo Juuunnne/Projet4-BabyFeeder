@@ -16,9 +16,9 @@ public:
     option();
     ~option();
     void setOption (int px, int py, int w, int h, int r, int g, int b, int a);
-    void drawOption(SDL_Renderer* renderer, feederButton fb);
+    void drawOption(SDL_Renderer* renderer);
     int changeAge();
-    void setInformation(feederButton fb, int select);
+    // void setInformation(feederButton fb, int select);
     tuple<int, int, int, int> getButtons();
 
 private:

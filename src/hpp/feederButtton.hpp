@@ -1,20 +1,21 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <tuple>
 #include "./button.hpp"
 
 class feederButton
 {
 public:
-    Button feederButtonMinus;
-    Button feederButtonPlus;
+    Button fButton;
 
     feederButton();
-    feederButton(int px, int py, SDL_Renderer* renderer);
     ~feederButton();
     void setQuantity(int q, int mx, int mn);
-    void setFeeder(int x, int y, SDL_Renderer* renderer);
+    void setFeeder(int px, int py, int w, int h, int r, int g, int b, int a);
+    void drawFeederButtons(SDL_Renderer *renderer);
     void drawFeeder(SDL_Renderer *renderer);
+    tuple<int, int, int, int> getButtons();
 
 private:
     int quantity;

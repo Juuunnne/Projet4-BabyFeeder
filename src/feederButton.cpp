@@ -6,43 +6,23 @@ feederButton::feederButton()
     /*Load Image and Add to the Texture*/
 }
 
-feederButton::feederButton(int px, int py, SDL_Renderer* renderer)
-{
-    /*Image's URL : "../public/img/feeding-bottle.png"*/
-    /*Load Image and Add to the Texture*/
-    this->setFeeder(px, py, renderer);
-}
-
 feederButton::~feederButton()
 {
 }
 
-void feederButton::setQuantity(int q, int mx, int mn)
-{
-    this->quantity = q;
-    this->max = mx;
-    this->min = mn;
+void feederButton::setFeeder (int px, int py, int w, int h, int r, int g, int b, int a) {
+    this->fButton.setButton(px, py, w, h, r, g, b, a);
 }
 
-void feederButton::setFeeder(int x, int y, SDL_Renderer* renderer)
+void feederButton::drawFeederButtons(SDL_Renderer *renderer)
 {
-    this->posx = x;
-    this->posy = y;
-    this->posTx = this->posx - 0 /*img size x*/ * ((2 * 0 /*img size x*/) / 3);
-    this->posTy = this->posy - 0 /*img size y*/ * ((2 * 0 /*img size y*/) / 3);
-    
-    feederButtonMinus.setButton(315, 400, 20, 20, 0, 0, 0, 255);
-    feederButtonPlus.setButton(355, 400, 20, 20, 0, 0, 0, 255);
+    this->fButton.drawButton(renderer);
 }
 
-void feederButton::drawFeeder(SDL_Renderer *renderer)
-{
-    /*Display Image and Quantity Text (Jun please)*/
-
-    /*Create 2 buttons for increase or reduce quantity*/
-    feederButtonMinus.drawButton(renderer);
-    feederButtonPlus.drawButton(renderer);
+void feederButton::drawFeeder(SDL_Renderer *renderer) {
+    //Draw image and ttf
 }
+
 //(posx - (200 /2 +15))
 
 void feederButton::verifyQuantity()
@@ -71,4 +51,8 @@ void feederButton::changeQuantity(bool increase, int amount)
         this->quantity = -amount;
         this->verifyQuantity();
     }
+}
+
+tuple<int, int, int, int> feederButton::getButtons() {
+    return make_tuple (fButton.posx, fButton.posy, fButton.width, fButton.height);
 }
