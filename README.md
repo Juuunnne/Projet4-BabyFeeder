@@ -4,7 +4,7 @@ This is a C++/SDL2 project which consists in building a baby's milk intake track
 
 Here is some explaination about how it works:
 
-Use __Make__ to compile and launch the program
+<sub>Use __Make__ to compile and launch the program</sub>
 
 
 Main.cpp -> call the app
