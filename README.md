@@ -1,7 +1,8 @@
 # Projet4-BabdyFeeder
 
-Use make to compile and launch the program
+Use ##Make## to compile and launch the program
 
+```
 Main.cpp -> call the app
 
 App.cpp : 
@@ -39,4 +40,4 @@ void timer::drawTimerBt(SDL_Renderer *renderer) drwn the button for the timer
 tuple<int, int, int, int> timer::getButtons() get the position, widht and height of thhe button
 
 windows.cpp :bool Window::InitSDL() init the SDL part and return if everything was good. 
-          
+```       
