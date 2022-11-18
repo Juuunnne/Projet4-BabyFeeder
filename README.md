@@ -1,6 +1,6 @@
 # Projet4-BabdyFeeder
 
-Please download our [Merged Version] (https://github.com/Juuunnne/BabdyFeeder_mergedVersion)
+Please download our [Merged Version](https://github.com/Juuunnne/BabdyFeeder_mergedVersion)
 
 This is a C++/SDL2 project which consists in building a baby's milk intake tracking app.
 
