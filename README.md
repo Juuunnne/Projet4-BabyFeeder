@@ -2,7 +2,7 @@
 
 Use __Make__ to compile and launch the program
 
-```C++
+```cpp
 Main.cpp -> call the app
 
 App.cpp : 
