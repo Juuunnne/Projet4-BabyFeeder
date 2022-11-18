@@ -1,6 +1,6 @@
 # Projet4-BabdyFeeder
 
-Use ##Make## to compile and launch the program
+Use __Make__ to compile and launch the program
 
 ```
 Main.cpp -> call the app
